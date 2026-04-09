@@ -1,9 +1,11 @@
 import React from 'react'
+import{RouterProvider } from 'react-router-dom'
+
+import router from './routes/user/router'
 
 export default function App() {
+	
   return (
-	<div>
-		<h1 className='text-center '>React App</h1>
-	</div>
+	<RouterProvider router={router}/>
   )
 }

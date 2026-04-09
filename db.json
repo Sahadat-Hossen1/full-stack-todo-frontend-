@@ -1,65 +1,160 @@
 {
-  "todo": [
-    {
-      "id": "0d2b",
-      "title": "hjjhgkhk",
-      "isCompleted": true
-    },
-    {
-      "id": "da2d",
-      "title": "lsdk",
-      "isCompleted": true
-    },
-    {
-      "id": "6150",
-      "title": "lsdk",
-      "isCompleted": false
-    },
-    {
-      "id": "2f90",
-      "title": "lsdk",
-      "isCompleted": true
-    },
-    {
-      "id": "e7ed",
-      "title": "lsdk",
-      "isCompleted": true
-    },
-    {
-      "id": "2e3e",
-      "title": "aslkdfja",
-      "isCompleted": false
-    },
-    {
-      "id": "2689",
-      "title": "s",
-      "isCompleted": false
-    }
-  ],
   "users": [
     {
-      "id": "1775449326331",
-      "firstName": "a",
-      "lastName": "saddfasdsfdff",
-      "email": "sahadat.hossen143515@gmail.com",
-      "phone": "12",
-      "address": "rttyertrety"
+      "id": 1,
+      "name": "Rahim Uddin",
+      "email": "rahim@example.com",
+      "password": "123456"
     },
     {
-      "id": "1775449729560",
-      "firstName": "sdf",
-      "lastName": "sdfg",
-      "email": "alamin@gmail.com",
-      "phone": "234",
-      "address": "sdfg"
+      "id": 2,
+      "name": "Karim Hasan",
+      "email": "karim@example.com",
+      "password": "123456"
     },
     {
-      "id": "1775449970855",
-      "firstName": "sahadat",
-      "lastName": "hossen",
-      "email": "sahadat.hossen143515@gmail.com",
-      "phone": "01606081657",
-      "address": "nayabari\n"
+      "id": 3,
+      "name": "Ayesha Akter",
+      "email": "ayesha@example.com",
+      "password": "123456"
+    },
+    {
+      "id": 4,
+      "name": "Nusrat Jahan",
+      "email": "nusrat@example.com",
+      "password": "123456"
+    },
+    {
+      "id": 5,
+      "name": "Sabbir Hossain",
+      "email": "sabbir@example.com",
+      "password": "123456"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "title": "Learn React basics",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Practice JavaScript",
+      "completed": true,
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "title": "Build todo app",
+      "completed": false,
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "title": "Read programming blog",
+      "completed": true,
+      "userId": 1
+    },
+
+    {
+      "id": 5,
+      "title": "Go to gym",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": 6,
+      "title": "Finish Node.js course",
+      "completed": true,
+      "userId": 2
+    },
+    {
+      "id": 7,
+      "title": "Write API",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": 8,
+      "title": "Fix bugs",
+      "completed": false,
+      "userId": 2
+    },
+
+    {
+      "id": 9,
+      "title": "Study for exam",
+      "completed": true,
+      "userId": 3
+    },
+    {
+      "id": 10,
+      "title": "Complete assignment",
+      "completed": false,
+      "userId": 3
+    },
+    {
+      "id": 11,
+      "title": "Watch tutorial",
+      "completed": true,
+      "userId": 3
+    },
+    {
+      "id": 12,
+      "title": "Revise notes",
+      "completed": false,
+      "userId": 3
+    },
+
+    {
+      "id": 13,
+      "title": "Buy groceries",
+      "completed": false,
+      "userId": 4
+    },
+    {
+      "id": 14,
+      "title": "Clean room",
+      "completed": true,
+      "userId": 4
+    },
+    {
+      "id": 15,
+      "title": "Cook dinner",
+      "completed": false,
+      "userId": 4
+    },
+    {
+      "id": 16,
+      "title": "Call friend",
+      "completed": true,
+      "userId": 4
+    },
+
+    {
+      "id": 17,
+      "title": "Learn MongoDB",
+      "completed": false,
+      "userId": 5
+    },
+    {
+      "id": 18,
+      "title": "Setup backend",
+      "completed": true,
+      "userId": 5
+    },
+    {
+      "id": 19,
+      "title": "Test API endpoints",
+      "completed": false,
+      "userId": 5
+    },
+    {
+      "id": 20,
+      "title": "Deploy project",
+      "completed": false,
+      "userId": 5
     }
   ]
 }
