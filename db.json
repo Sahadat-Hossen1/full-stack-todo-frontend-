@@ -1,34 +1,10 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Rahim Uddin",
-      "email": "rahim@example.com",
-      "password": "123456"
-    },
-    {
-      "id": 2,
-      "name": "Karim Hasan",
-      "email": "karim@example.com",
-      "password": "123456"
-    },
-    {
-      "id": 3,
-      "name": "Ayesha Akter",
-      "email": "ayesha@example.com",
-      "password": "123456"
-    },
-    {
-      "id": 4,
-      "name": "Nusrat Jahan",
-      "email": "nusrat@example.com",
-      "password": "123456"
-    },
-    {
-      "id": 5,
-      "name": "Sabbir Hossain",
-      "email": "sabbir@example.com",
-      "password": "123456"
+      "id": "b7e7",
+      "name": "Sahadat Hossen",
+      "email": "Sahadat3@gmail.com",
+      "uid": "CxCNE4G7qLQUqRIntl8sSPIUbgx1"
     }
   ],
   "todos": [
@@ -56,7 +32,6 @@
       "completed": true,
       "userId": 1
     },
-
     {
       "id": 5,
       "title": "Go to gym",
@@ -81,7 +56,6 @@
       "completed": false,
       "userId": 2
     },
-
     {
       "id": 9,
       "title": "Study for exam",
@@ -106,7 +80,6 @@
       "completed": false,
       "userId": 3
     },
-
     {
       "id": 13,
       "title": "Buy groceries",
@@ -131,7 +104,6 @@
       "completed": true,
       "userId": 4
     },
-
     {
       "id": 17,
       "title": "Learn MongoDB",

@@ -1,24 +1,28 @@
 import React, { useState } from "react";
+import useAuth from "../../../context/auth/useAuth";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+const {isLoggedIn,setIsLoggedIn}=useAuth();
   return (
     <nav className="bg-gray-800 text-white px-4 py-3">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-xl font-bold">Todos</h1>
+        <NavLink to="/registration" className="text-gray-300 hover:text-white">
+          Register
+        </NavLink>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-4">
           {!isLoggedIn ? (
-            <button
-              onClick={() => setIsLoggedIn(true)}
+            <NavLink to="/login"
+             
               className="bg-blue-500 px-4 py-1 rounded hover:bg-blue-600"
             >
               Login
-            </button>
+            </NavLink>
           ) : (
             <div className="flex items-center gap-2">
               <span>👤 Profile</span>
