@@ -3,6 +3,7 @@ import { Eye, EyeOff, Lock, Mail, User } from 'lucide-react';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../firebase/firebaseConfig/FirebaseConfig';
+import GoogleSignIn from '../components/GoogleSignin/GoogleSignIn';
 
 export default function Registration() {
       const [showPassword, setShowPassword] = useState(false);
@@ -138,7 +139,7 @@ export default function Registration() {
           </div>
 
           {/* Google Login */}
-          <button
+          {/* <button
             type="button"
             className="w-full py-3 border rounded-xl flex items-center justify-center gap-2 hover:bg-gray-50 transition"
           >
@@ -148,7 +149,8 @@ export default function Registration() {
               className="w-5 h-5"
             />
             Continue with Google
-          </button>
+          </button> */}
+          <GoogleSignIn/>
         </form>
 
         {/* Signup link */}

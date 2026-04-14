@@ -3,6 +3,7 @@ import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from './../firebase/firebaseConfig/FirebaseConfig';
 import { signInWithEmailAndPassword } from "firebase/auth";
+import GoogleSignIn from "../components/GoogleSignin/GoogleSignIn";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -116,9 +117,10 @@ signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
             <div className="flex-1 h-px bg-gray-300"></div>
           </div>
 
-          {/* Google Login */}
           
         </form>
+          {/* Google Login */}
+          <GoogleSignIn/>
 
         {/* Signup link */}
         <p className="text-center text-gray-600 mt-6 text-sm">

@@ -1,0 +1,6 @@
+google signin ,
+add todo ,
+show todos,
+togle active pending 
+if users not login then noOne could add new todo 
+also could not see his/him todo
