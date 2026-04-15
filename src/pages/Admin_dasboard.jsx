@@ -1,7 +1,12 @@
 import React from "react";
+import useAdmin from './../context/Admin/useAdmin';
 
 
 export default function Admin_dashboard() {
+const {AllUsersData,AllTodosData}=useAdmin()
+const lastFiveUsers = AllUsersData.slice(-5);
+// console.log(lastFiveUsers);
+
 
 
   return (
@@ -17,15 +22,15 @@ export default function Admin_dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <div className="bg-white p-5 rounded-2xl shadow">
             <h3 className="text-gray-500">Total Users</h3>
-            <p className="text-2xl font-bold mt-2">1,250</p>
+            <p className="text-2xl font-bold mt-2">{AllUsersData.length}</p>
           </div>
-          <div className="bg-white p-5 rounded-2xl shadow">
+          {/* <div className="bg-white p-5 rounded-2xl shadow">
             <h3 className="text-gray-500">Revenue</h3>
             <p className="text-2xl font-bold mt-2">$8,430</p>
-          </div>
+          </div> */}
           <div className="bg-white p-5 rounded-2xl shadow">
-            <h3 className="text-gray-500">Orders</h3>
-            <p className="text-2xl font-bold mt-2">320</p>
+            <h3 className="text-gray-500">All Todos</h3>
+            <p className="text-2xl font-bold mt-2">{AllTodosData.length}</p>
           </div>
         </div>
 
@@ -37,25 +42,21 @@ export default function Admin_dashboard() {
               <tr className="border-b">
                 <th className="py-2">Name</th>
                 <th>Email</th>
-                <th>Status</th>
+                {/* <th>Status</th> */}
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b">
-                <td className="py-2">John Doe</td>
-                <td>john@example.com</td>
-                <td className="text-green-500">Active</td>
+               {
+                 lastFiveUsers.map((user) => (
+                  <tr className="border-b">
+                  <td className="py-2">{user.displayName}</td>
+                  <td>{user.email}</td>
+
+                  {/* <td className="text-yellow-500">Pending</td> */}
               </tr>
-              <tr className="border-b">
-                <td className="py-2">Jane Smith</td>
-                <td>jane@example.com</td>
-                <td className="text-yellow-500">Pending</td>
-              </tr>
-              <tr>
-                <td className="py-2">Alex Brown</td>
-                <td>alex@example.com</td>
-                <td className="text-red-500">Blocked</td>
-              </tr>
+                ))
+               }
+              
             </tbody>
           </table>
         </div>

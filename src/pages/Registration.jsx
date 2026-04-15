@@ -33,9 +33,13 @@ export default function Registration() {
           console.log(user);
           const isAlreadyExist=AllUsersData.find((user)=>user.uid === userCredential.user.uid);
           const newUser={
-            name,
-            email,
+            id:userCredential.user.metadata.createdAt,
             uid:userCredential.user.uid,
+            displayName:userCredential.user.displayName,
+            email,
+            photoURL:userCredential.user.photoURL,
+            phoneNumber:userCredential.user.phoneNumber,
+            
             role:"user"
           }
           if(!isAlreadyExist){

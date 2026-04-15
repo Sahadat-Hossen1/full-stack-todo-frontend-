@@ -6,8 +6,7 @@ import useAuth from "../context/auth/useAuth";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
-
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
   console.log(user);
   
   // 
@@ -29,10 +28,18 @@ const navigate=useNavigate()
   })
   };
 
-  if (!user) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-500">Loading...</p>
+      </div>
+    );
+  }
+
+  if (!user?.uid) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-500">User not found.</p>
       </div>
     );
   }

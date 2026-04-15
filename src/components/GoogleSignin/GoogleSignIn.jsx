@@ -22,7 +22,11 @@ export default function GoogleSignIn() {
             if (user.uid) {
               const isAlreadyExist=AllUsersData.find((user)=>user.uid === result.user.uid);
               const newUser={
-                name:user.displayName,
+                id:user.metadata.createdAt,
+                photoURL:user.photoURL,
+                phoneNumber:user.phoneNumber,
+
+                displayName:user.displayName,
                 email:user.email,
                 uid:user.uid,
                 role:"user"

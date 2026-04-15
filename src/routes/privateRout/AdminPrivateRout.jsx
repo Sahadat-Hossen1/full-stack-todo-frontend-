@@ -1,32 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useAuth from '../../context/auth/useAuth'
-import { useNavigate } from 'react-router-dom'
-import useAdmin from '../../context/Admin/useAdmin'
+import { Navigate } from 'react-router-dom'
 
 export default function AdminPrivateRout({ children }) {
-    const {AllUsersData}=useAdmin()
-    const { user } = useAuth()
-    const navigate = useNavigate()
+    const { user, isLoading } = useAuth()
 
-    useEffect(() => {
-        const isUserExist=AllUsersData.find((userData)=>userData.uid === user?.uid);
-        if (isUserExist?.role === "admin") {
-
-            // User is logged in, allow access to children
-            return
-        } else {
-            // User is not logged in, redirect to login
-            navigate("/")
-        }
-    }, [user?.uid, navigate, AllUsersData])
-
-    // Show loading while checking auth
-    if (!user) {
+    if (isLoading) {
         return <div className="min-h-screen flex items-center justify-center">
             <p className="text-gray-500">Loading...</p>
         </div>
     }
 
-    // If user exists, render the children
+    if (!user?.uid || user?.role !== "admin") {
+        return <Navigate to="/" replace />
+    }
+
     return children
 }

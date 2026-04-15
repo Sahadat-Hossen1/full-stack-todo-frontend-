@@ -14,14 +14,14 @@ export default function SideBar() {
     <aside className="w-64 bg-white shadow-lg p-5">
       <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
       <nav className="space-y-4">
-        <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+        <NavLink to="/admin" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
           <Home size={18} />
           <span>Dashboard</span>
-        </div>
-        <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+        </NavLink>
+        <NavLink to="./admin/allusers" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
           <Users size={18} />
           <span>Users</span>
-        </div>
+        </NavLink>
         <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
           <BarChart3 size={18} />
           <span>Analytics</span>

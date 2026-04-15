@@ -8,6 +8,7 @@ import PrivateRout from "../privateRout/PrivateRout";
 import Admin_dashboard from "../../pages/Admin_dasboard";
 import AdminPrivateRout from "../privateRout/AdminPrivateRout";
 import AdminLayout from "../../layout/AdminLayout";
+import Admin_All_User from "../../pages/Admin_All_User";
 
 const router = createBrowserRouter([
   {
@@ -22,30 +23,37 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
-      },{
-        path:"/userprofile",
-        element:<PrivateRout>
-          <UserProfile/>
-        </PrivateRout>
-      }
+      },
+      {
+        path: "/userprofile",
+        element: (
+          <PrivateRout>
+            <UserProfile />
+          </PrivateRout>
+        ),
+      },
     ],
   },
- 
+
   {
-    path:"/admin",
-    element:
+    path: "/admin",
+    element: (
       <AdminPrivateRout>
-        <AdminLayout/>
+        <AdminLayout />
       </AdminPrivateRout>
-    ,
-    children:[
+    ),
+    children: [
       {
-        path:"/admin",
-        element:<Admin_dashboard/>
-      }
-    ]
+        path: "/admin",
+        element: <Admin_dashboard />,
+      },
+      {
+        path: "admin/allusers",
+        element: <Admin_All_User />,
+      },
+    ],
   },
-   {
+  {
     path: "*",
     element: <div>404</div>,
   },
