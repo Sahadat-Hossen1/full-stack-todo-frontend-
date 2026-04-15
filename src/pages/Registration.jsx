@@ -4,10 +4,19 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../firebase/firebaseConfig/FirebaseConfig';
 import GoogleSignIn from '../components/GoogleSignin/GoogleSignIn';
+import PostUser from '../services/PostUser';
+import useAdmin from '../context/Admin/useAdmin';
 
 export default function Registration() {
+  //
+  const {AllUsersData}=useAdmin()
+  // 
       const [showPassword, setShowPassword] = useState(false);
+      const[errorMessage, setErrorMessage]=useState('');
+      // 
+
     const navigate=useNavigate()
+    // Handle form submission
     const handleRegistration=(e)=>{
         e.preventDefault()
     const formData=e.target;
@@ -19,26 +28,29 @@ export default function Registration() {
      createUserWithEmailAndPassword(auth,email,password).then((userCredential)=>{
         const user=userCredential.user;
       if(user){
-        updateProfile(auth.currentUser,{displayName:name}).then(()=>{
+        updateProfile(auth.currentUser,{displayName:name}).then(async()=>{
           console.log("user name updated");
-          fetch("http://localhost:3000/users",{
-            method:"POST",
-            headers:{
-              "content-type":"application/json"
-            },
-            body:JSON.stringify({
-              name:name,
-              email:email,
-              uid:user.uid
-              })
-            });
+          console.log(user);
+          const isAlreadyExist=AllUsersData.find((user)=>user.uid === userCredential.user.uid);
+          const newUser={
+            name,
+            email,
+            uid:userCredential.user.uid,
+            role:"user"
+          }
+          if(!isAlreadyExist){
+            await PostUser(newUser);
+          }
+          // PostUser()
             navigate("/")
         }).catch((error)=>{
           console.log(error);
+          setErrorMessage(error.message);
         })
       }
       }).catch((error)=>{
         console.log(error);
+        setErrorMessage(error.message);
      })
     }
   return (
@@ -122,7 +134,9 @@ export default function Registration() {
               Forgot Password?
             </button>
           </div>
-
+         {
+          errorMessage && <p className="text-red-500">{errorMessage}</p>
+         }
           {/* Login button */}
           <button
             type="submit"

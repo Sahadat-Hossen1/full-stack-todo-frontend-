@@ -4,25 +4,62 @@ import { onAuthStateChanged } from "firebase/auth";
 import auth from "../../firebase/firebaseConfig/FirebaseConfig";
 export default function AuthProvider({ children }) {
   //all state
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const [user, setUser] = useState({});
-  const [allUsers, setAllUsers] = useState([]);
-  //get All users
-  useEffect(()=>{
-    fetch("http://localhost:3000/users").then((res)=>res.json()).then((data)=>setAllUsers(data)).catch((err)=>{
-      console.log(err.message);
-      
-    })
-  },[])
-  // current user details
+  
+  // current user details with merged Firebase and JSON data
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      // console.log(currentUser.uid);
-      if (currentUser) {
-        setIsLoggedIn(true);
-        setUser(currentUser);
+      if (currentUser.uid) {
+        setisLoading(true);
+        
+        // Fetch user data from JSON database
+        const fetchUserData = async () => {
+          try {
+            const res = await fetch(
+              `http://localhost:3000/users/${currentUser.uid}`
+            );
+            
+            let dbData = {};
+            // Only parse JSON if response is ok (200-299)
+            if (res.ok) {
+              dbData = await res.json();
+              console.log("User data from DB:", dbData);
+            } else {
+              console.log("User not found in database, using default role");
+            }
+            
+            // Merge Firebase data with JSON data
+            const mergedUser = {
+              // Firebase data
+              uid: currentUser.uid,
+              email: currentUser.email,
+              displayName: currentUser.displayName,
+              photoURL: currentUser.photoURL,
+              emailVerified: currentUser.emailVerified,
+              isAnonymous: currentUser.isAnonymous,
+              metadata: currentUser.metadata,
+              // JSON database data
+              ...dbData,
+              // For easier access
+              name: dbData?.name || currentUser.displayName,
+              role: dbData?.role || 'user'
+            };
+            
+            setUser(mergedUser);
+          } catch (error) {
+            console.log("Error fetching user data:", error);
+            // Set user with default role on error
+            setUser({
+              ...currentUser,
+              role: 'user'
+            });
+          }
+        };
+        
+        fetchUserData();
       } else {
-        setIsLoggedIn(false);
+        setisLoading(false);
         setUser({});
       }
     });
@@ -32,13 +69,12 @@ export default function AuthProvider({ children }) {
   // logout function
 
   useEffect(() => {
-    console.log(user);
+    console.log("User role:", user.role);
   }, [user]);
 
   const authInfo = {
     user,
-    setIsLoggedIn,
-    allUsers,isLoggedIn
+    setisLoading,isLoading
     
   };
   //

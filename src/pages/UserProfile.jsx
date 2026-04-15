@@ -3,10 +3,14 @@ import { Mail, Phone, MapPin, Edit, LogOut } from "lucide-react";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/firebaseConfig/FirebaseConfig";
 import useAuth from "../context/auth/useAuth";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
+
   const { user } = useAuth();
+  console.log(user);
+  
+  // 
 const navigate=useNavigate()
   // destructure safely
   const {
@@ -16,6 +20,7 @@ const navigate=useNavigate()
     photoURL,
     phoneNumber,
     emailVerified,
+    role
   } = user || {};
 
   const handleLogout = async () => {
@@ -39,7 +44,8 @@ const navigate=useNavigate()
         {/* Cover */}
         <div className="h-40 bg-gradient-to-r from-indigo-500 to-blue-500 relative">
           <img
-            src={photoURL || "https://i.pravatar.cc/150"}
+            src={photoURL}
+            // src={photoURL || "https://i.pravatar.cc/150"}
             alt="profile"
             className="w-32 h-32 rounded-full border-4 border-white absolute -bottom-16 left-6 object-cover"
           />
@@ -55,7 +61,7 @@ const navigate=useNavigate()
                 {displayName || "No Name"}
               </h2>
 
-              <p className="text-gray-500">User</p>
+              <p className="text-gray-500">{role || "User"}</p>
 
               {/* Email Verification */}
               <div className="mt-1">
@@ -73,6 +79,14 @@ const navigate=useNavigate()
 
             {/* Buttons */}
             <div className="flex gap-3">
+              {user?.role === "admin" && (
+                <NavLink
+                  to="/admin"
+                  className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 no-underline"
+                >
+                  Visit Admin Dashboard
+                </NavLink>
+              )}
               <button className="flex items-center gap-2 px-4 py-2 bg-indigo-500 text-white rounded-xl hover:bg-indigo-600">
                 <Edit size={16} /> Edit
               </button>

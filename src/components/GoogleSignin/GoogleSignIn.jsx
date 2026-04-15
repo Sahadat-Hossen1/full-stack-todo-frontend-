@@ -2,31 +2,42 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import React from 'react'
 import auth from '../../firebase/firebaseConfig/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
+import useAdmin from '../../context/Admin/useAdmin'
+import PostUser from '../../services/PostUser'
 
 export default function GoogleSignIn() {
+  // 
+  const {AllUsersData}=useAdmin()
+  // google sign in methode 
   const googleProvider=new GoogleAuthProvider()
+  // navigate
+
   const navigate=useNavigate()
+  // 
     const handleGoogleSingIn=()=>{
           //  conent with google signin methode
-          signInWithPopup(auth,googleProvider).then((result)=>{
+          signInWithPopup(auth,googleProvider).then(async(result)=>{
             const user=result.user;
             // console.log(user);
             if (user.uid) {
-              fetch("http://localhost:3000/users",{
-                method:"POST",
-                headers:{
-                  "content-type":"application/json"
-                },
-                body:JSON.stringify({
-                  name:user.displayName,
-                  email:user.email,
-                  uid:user.uid
-                  })
-              }).then(()=>{}).catch((error)=>{
-                console.log(error.message);
-              })
+              const isAlreadyExist=AllUsersData.find((user)=>user.uid === result.user.uid);
+              const newUser={
+                name:user.displayName,
+                email:user.email,
+                uid:user.uid,
+                role:"user"
+              }
+              if(!isAlreadyExist){
+                await PostUser(newUser).then(()=>{
+                  navigate('/')
+                }).catch((error)=>{
+                  console.log(error.message);
+                })
+              }else{
+                console.log("user already exist");
+                navigate('/')
+              }
             }
-            navigate('/')
           }).catch((error)=>{
             console.log(error);
           })

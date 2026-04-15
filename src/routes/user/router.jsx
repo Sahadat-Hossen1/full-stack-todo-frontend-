@@ -6,7 +6,7 @@ import Registration from "../../pages/Registration";
 import UserProfile from "../../pages/UserProfile";
 import PrivateRout from "../privateRout/PrivateRout";
 import Admin_dashboard from "../../pages/Admin_dasboard";
-import AdminPrivateRout from "../privateRout/AdminRout";
+import AdminPrivateRout from "../privateRout/AdminPrivateRout";
 import AdminLayout from "../../layout/AdminLayout";
 
 const router = createBrowserRouter([
@@ -34,7 +34,9 @@ const router = createBrowserRouter([
   {
     path:"/admin",
     element:
-      <AdminLayout/>
+      <AdminPrivateRout>
+        <AdminLayout/>
+      </AdminPrivateRout>
     ,
     children:[
       {

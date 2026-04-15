@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import AdminContext from './AdminContext'
 
 export default function AdminProvider({children}) {
-      const [UsersData, setUsersData] = useState([]);
-  const [TodosData, setTodosData] = useState([]);
+      const [AllUsersData, setAllUsersData] = useState([]);
+  const [AllTodosData, setAllTodosData] = useState([]);
   const [loading, setLoading] = useState(false);
   const GetAllUsers = async () => {
     const res = await fetch("http://localhost:3000/users");
@@ -25,8 +25,8 @@ export default function AdminProvider({children}) {
         setLoading(true);
         const users = await GetAllUsers();
         const todos = await GetAllTodos();
-        setUsersData(users);
-        setTodosData(todos);
+        setAllUsersData(users);
+        setAllTodosData(todos);
         setLoading(false);
       };
       GetAllData();
@@ -37,11 +37,11 @@ export default function AdminProvider({children}) {
 
   
 
-  console.log(UsersData);
-  console.log(TodosData);
+  // console.log(AllUsersData);
+  // console.log(AllTodosData);
     const AdminInfo={
-        UsersData,
-        TodosData,
+        AllUsersData,
+        AllTodosData,
         loading,
     }
   return (
