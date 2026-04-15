@@ -1,6 +1,12 @@
-google signin ,
+google signin (ok),
 add todo ,
 show todos,
 togle active pending 
 if users not login then noOne could add new todo 
-also could not see his/him todo
+also could not see his/him todo,
+also dont visit his profile page ,
+without admin no one can visite admin profile page or admin dasboard 
+admin can be monitor all users in adminUsers page 
+
+and
+ in admindasboard will have all users and todos amount 

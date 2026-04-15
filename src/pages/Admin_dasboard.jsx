@@ -1,37 +1,13 @@
 import React from "react";
-import { Home, Users, Settings, BarChart3, LogOut } from "lucide-react";
+
 
 export default function Admin_dashboard() {
+
+
   return (
     <div className="min-h-screen flex bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-lg p-5">
-        <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
-        <nav className="space-y-4">
-          <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <Home size={18} />
-            <span>Dashboard</span>
-          </div>
-          <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <Users size={18} />
-            <span>Users</span>
-          </div>
-          <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <BarChart3 size={18} />
-            <span>Analytics</span>
-          </div>
-          <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
-            <Settings size={18} />
-            <span>Settings</span>
-          </div>
-        </nav>
-
-        <div className="mt-10 border-t pt-4">
-          <button className="flex items-center gap-2 text-red-500 hover:text-red-600">
-            <LogOut size={18} /> Logout
-          </button>
-        </div>
-      </aside>
+    
 
       {/* Main Content */}
       <main className="flex-1 p-6">

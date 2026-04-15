@@ -4,25 +4,16 @@
       "id": "b7e7",
       "name": "Sahadat Hossen",
       "email": "Sahadat3@gmail.com",
-      "uid": "CxCNE4G7qLQUqRIntl8sSPIUbgx1"
+      "uid": "CxCNE4G7qLQUqRIntl8sSPIUbgx1",
+      "roll":"user"
     },
-    {
-      "id": "d587",
-      "name": "Sahadat Hossen",
-      "email": "sahadat.hossen1435@gmail.com",
-      "uid": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
-    },
-    {
-      "id": "7851",
-      "name": "Sahadat Hossen",
-      "email": "sahadat.hossen1435@gmail.com",
-      "uid": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
-    },
+    
     {
       "id": "33e5",
       "name": "Sahadat Hossen",
       "email": "sahadat.hossen1435@gmail.com",
-      "uid": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
+      "uid": "wdKTuIlLvGQVp9TW2A8bDZVgbul1",
+      "roll":"admin"
     }
   ],
   "todos": [
@@ -30,13 +21,13 @@
       "id": "1",
       "title": "Learn React basics",
       "completed": false,
-      "userId": 1
+      "userId": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
     },
     {
       "id": "2",
       "title": "Practice JavaScript",
       "completed": true,
-      "userId": 1
+      "userId": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
     },
     {
       "id": "3",
@@ -48,7 +39,7 @@
       "id": "4",
       "title": "Read programming blog",
       "completed": true,
-      "userId": 1
+      "userId": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
     },
     {
       "id": "5",
