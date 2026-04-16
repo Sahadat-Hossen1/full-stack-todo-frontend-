@@ -16,7 +16,7 @@ export default function AuthProvider({ children }) {
       }
 
       setisLoading(true);
-console.log(currentUser);
+// console.log(currentUser);
 
       try {
         const res = await fetch(
@@ -61,6 +61,7 @@ console.log(currentUser);
 
     return unsubscribe;
   }, []);
+  
 
   const authInfo = {
     user,

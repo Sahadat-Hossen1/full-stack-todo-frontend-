@@ -4,10 +4,14 @@ import { signOut } from "firebase/auth";
 import auth from "../firebase/firebaseConfig/FirebaseConfig";
 import useAuth from "../context/auth/useAuth";
 import { NavLink, useNavigate } from "react-router-dom";
+import useTodo from './../context/todo/useTodo';
 
 export default function UserProfile() {
   const { user, isLoading } = useAuth();
-  console.log(user);
+  const{todo}=useTodo()
+  // console.log(user);
+    console.log(user?.metadata.creationTime, user?.metadata.lastSignInTime);
+
   
   // 
 const navigate=useNavigate()
@@ -19,7 +23,8 @@ const navigate=useNavigate()
     photoURL,
     phoneNumber,
     emailVerified,
-    role
+    role,
+    metadata,
   } = user || {};
 
   const handleLogout = async () => {
@@ -51,7 +56,7 @@ const navigate=useNavigate()
         {/* Cover */}
         <div className="h-40 bg-gradient-to-r from-indigo-500 to-blue-500 relative">
           <img
-            src={photoURL}
+            src={photoURL||displayName.charAt(0).toUpperCase()}
             // src={photoURL || "https://i.pravatar.cc/150"}
             alt="profile"
             className="w-32 h-32 rounded-full border-4 border-white absolute -bottom-16 left-6 object-cover"
@@ -125,10 +130,10 @@ const navigate=useNavigate()
             )}
 
             {/* Location */}
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl md:col-span-2">
+            {/* <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl md:col-span-2">
               <MapPin className="text-indigo-500" />
               <span className="text-gray-700">Dhaka, Bangladesh</span>
-            </div>
+            </div> */}
 
             {/* UID */}
             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl md:col-span-2">
@@ -140,7 +145,7 @@ const navigate=useNavigate()
           </div>
 
           {/* About */}
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-2">
               About
             </h3>
@@ -148,23 +153,24 @@ const navigate=useNavigate()
               Passionate MERN stack developer. Loves building web apps,
               solving problems, and learning new technologies.
             </p>
-          </div>
+          </div> */}
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 mt-6 text-center">
+          <div className="flex justify-between mx-[30%] gap-4 mt-6 text-center">
             <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-500">25</h4>
-              <p className="text-gray-500 text-sm">Projects</p>
+              <h4 className="text-xl font-bold text-indigo-500">{todo.length} </h4>
+              <p className="text-gray-500 text-sm">Todos</p>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-500">10</h4>
-              <p className="text-gray-500 text-sm">Clients</p>
-            </div>
+            
 
             <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-500">1+</h4>
-              <p className="text-gray-500 text-sm">Years Exp</p>
+              <h4 className="text-sm font-bold text-indigo-500">{metadata.creationTime} </h4>
+              <p className="text-gray-500 text-sm">Created At </p>
+            </div>
+            <div className="p-4 bg-gray-50 rounded-xl">
+              <h4 className="text-sm font-bold text-indigo-500">{metadata.lastSignInTime} </h4>
+              <p className="text-gray-500 text-sm">last login </p>
             </div>
           </div>
 
