@@ -18,7 +18,7 @@ export default function SideBar() {
           <Home size={18} />
           <span>Dashboard</span>
         </NavLink>
-        <NavLink to="./admin/allusers" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+        <NavLink to="/admin/allusers" className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
           <Users size={18} />
           <span>Users</span>
         </NavLink>

@@ -1,6 +1,7 @@
 import React from 'react'
 import useAdmin from '../context/Admin/useAdmin'
 import { Mail, Shield, User } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 export default function Admin_All_User() {
     const {AllUsersData}=useAdmin()
@@ -73,9 +74,9 @@ export default function Admin_All_User() {
 
             {/* Actions */}
             <div className="mt-5 flex gap-2">
-              <button className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white text-sm py-2 rounded-lg transition">
+              <NavLink to={`/admin/allusers/${user.id}`} className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white text-sm py-2 rounded-lg transition text-center">
                 View
-              </button>
+              </NavLink>
               <button className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 text-sm py-2 rounded-lg transition">
                 Remove
               </button>

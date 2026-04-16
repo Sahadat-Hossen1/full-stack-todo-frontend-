@@ -9,6 +9,7 @@ import Admin_dashboard from "../../pages/Admin_dasboard";
 import AdminPrivateRout from "../privateRout/AdminPrivateRout";
 import AdminLayout from "../../layout/AdminLayout";
 import Admin_All_User from "../../pages/Admin_All_User";
+import SingleUser from "../../components/admin/SingleUser";
 
 const router = createBrowserRouter([
   {
@@ -44,18 +45,24 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/admin",
+        index: true,
         element: <Admin_dashboard />,
       },
       {
-        path: "admin/allusers",
+        path: "allusers",
         element: <Admin_All_User />,
+      },
+      {
+        path: "allusers/:id",
+        element: <SingleUser />,
       },
     ],
   },
   {
     path: "*",
-    element: <div>404</div>,
+    element: <div className="flex items-center justify-center h-screen">
+      <h1 className="text-3xl font-bold">404 Page Not Found</h1>
+    </div>,
   },
 ]);
 export default router;
