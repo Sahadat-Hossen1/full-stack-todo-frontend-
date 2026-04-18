@@ -10,8 +10,6 @@ export default function UserProfile() {
   const { user, isLoading } = useAuth();
   const{todo}=useTodo()
   // console.log(user);
-    console.log(user?.metadata.creationTime, user?.metadata.lastSignInTime);
-
   
   // 
 const navigate=useNavigate()

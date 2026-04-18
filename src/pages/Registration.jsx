@@ -39,7 +39,7 @@ export default function Registration() {
             email,
             photoURL:userCredential.user.photoURL,
             phoneNumber:userCredential.user.phoneNumber,
-            
+            metadata:userCredential.user.metadata,
             role:"user"
           }
           if(!isAlreadyExist){
