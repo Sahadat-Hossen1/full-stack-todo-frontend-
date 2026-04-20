@@ -7,13 +7,13 @@ export default function TodoProvider({children}) {
   const{user}=useAuth()
   const userUID=user?.uid;
   // 
- const[todo,setTodo]=useState([])
+ const[todos,setTodos]=useState([])
  const[isLoading,setIsLoading]=useState(false)
 
 useEffect(()=>{
  const fetchTodo=async()=>{
    if(!user) {
-  setTodo([])
+  setTodos([])
   setIsLoading(false)
   return
  }
@@ -22,7 +22,9 @@ useEffect(()=>{
     setIsLoading(true)
     const res=await fetch(`http://localhost:3000/todos?userUID=${userUID}`)
     const data=await res.json()
-    setTodo(data)
+    // console.log(data.reverse());
+    
+    setTodos(data.reverse())
   } catch (error) {
     // setIsLoading(false)
     console.log("error from get todo", error.message);
@@ -36,12 +38,13 @@ fetchTodo()
 },[userUID])
 // 
 useEffect(()=>{
-  // console.log(todo);
+  console.log(todos);
+  console.log(userUID)
   
-})
+},[todos,userUID])
 // 
 const todoInfo={
-todo,isLoading
+todos,setTodos,isLoading
 }
   return (
     <TodoContext.Provider value={todoInfo}>{children}</TodoContext.Provider>

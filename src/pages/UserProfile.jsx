@@ -8,7 +8,7 @@ import useTodo from './../context/todo/useTodo';
 
 export default function UserProfile() {
   const { user, isLoading } = useAuth();
-  const{todo}=useTodo()
+  const{todos}=useTodo()
   // console.log(user);
   
   // 
@@ -156,7 +156,7 @@ const navigate=useNavigate()
           {/* Stats */}
           <div className="flex justify-between mx-[30%] gap-4 mt-6 text-center">
             <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-500">{todo.length} </h4>
+              <h4 className="text-xl font-bold text-indigo-500">{todos?.length} </h4>
               <p className="text-gray-500 text-sm">Todos</p>
             </div>
 

@@ -1,8 +1,8 @@
-google signin (ok),
 add todo ,
 show todos,
 togle active pending 
 if users not login then noOne could add new todo 
+google signin (ok),
 also could not see his/him todo,
 also dont visit his profile page (ok),
 without admin no one can visite admin profile page or admin dasboard  (ok)
@@ -10,4 +10,4 @@ admin can be monitor all users in adminUsers page  (ok)
 
 and
  in admindasboard will have all users and todos amount (toal todos (ok)) 
- admin will be see user details  like user all info and total todo
+ admin will be see user details  like user all info and total todo(ok)
