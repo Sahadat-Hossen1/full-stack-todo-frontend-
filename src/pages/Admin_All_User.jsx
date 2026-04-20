@@ -6,27 +6,7 @@ import { NavLink } from 'react-router-dom';
 export default function Admin_All_User() {
     const {AllUsersData}=useAdmin()
   return (
-//     <div className='min-h-screen flex-row px-4 bg-gray-100'>
-//         <h1 className='text-3xl font-semibold mb-6'>All Users</h1>
-//         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-6'>
-//             {AllUsersData.map((user)=>(<div className='bg-white p-5 rounded-2xl shadow'>
-//                <h1 className='text-gray-500'>
-                
-//                  User Name:  {user.displayName}
-//                 </h1>
-//                 <h1 className='text-gray-500'>
-//                 User email:{user.email}
-//                 </h1>
-//                 <h1 className='text-gray-500'>
-//                 Roll:{user.role}
-//                 </h1>
-//                 <p>userUID: {user.uid} </p>
-//                 <p> userID: {user.id} </p>
-//                 </div>))}
-//         </div>
-//     </div>
-//   )
-// }
+
  <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
       <h1 className="text-3xl font-bold text-gray-800 mb-8">
@@ -34,7 +14,7 @@ export default function Admin_All_User() {
       </h1>
 
       {/* Users Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
         {AllUsersData.map((user) => (
           <div
             key={user.id}
@@ -63,12 +43,12 @@ export default function Admin_All_User() {
 
               <div className="flex items-center gap-2 text-gray-600">
                 <Shield size={16} />
-                <span className="capitalize">{user.role}</span>
+                <span className="capitalize">Role: {user.role}</span>
               </div>
 
               <div className="flex items-center gap-2 text-gray-400 text-xs break-all">
                 <User size={14} />
-                <span>{user.uid}</span>
+                <span>UID: {user.uid}</span>
               </div>
             </div>
 
@@ -77,9 +57,9 @@ export default function Admin_All_User() {
               <NavLink to={`/admin/allusers/${user.id}`} className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white text-sm py-2 rounded-lg transition text-center">
                 View
               </NavLink>
-              <button className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 text-sm py-2 rounded-lg transition">
+              {/* <button className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 text-sm py-2 rounded-lg transition">
                 Remove
-              </button>
+              </button> */}
             </div>
           </div>
         ))}

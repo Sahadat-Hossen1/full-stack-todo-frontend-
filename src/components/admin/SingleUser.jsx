@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import useAdmin from './../../context/Admin/useAdmin';
+// import SingleUser from './SingleUser';
 
 export default function SingleUser() {
   const { id } = useParams();
   const navigate = useNavigate();
-//
-const[singleUser,setSingleUser] =useState([])
+  // 
+  const[singleUser,setSingleUser] =useState([])
+  // 
+  const {AllTodosData}=useAdmin()
+ 
+  const todoByUID = singleUser.length > 0 ? AllTodosData.filter((todo) => todo?.userUID === singleUser[0]?.uid) : [];
+  console.log(todoByUID);
+  
+  
+
 //
 useEffect(()=>{
   const getSingleUser=async()=>{
     const response=await fetch(`http://localhost:3000/users?id=${id}`)
     const data=await response.json()
-    console.log(data[0]?.metadata?.createdAt);
+    // console.log(data[0]?.metadata?.createdAt);
     
     setSingleUser(data)
   }
   getSingleUser()
 },[id])
-console.log(singleUser);
+// console.log(singleUser);
 
 
   if (!singleUser) {
@@ -68,6 +78,27 @@ console.log(singleUser);
         </div>
           ))
         }
+
+        {/* Display Todos */}
+        <div className="mt-6">
+          <h3 className="text-xl font-semibold mb-4">User Todos</h3>
+          {todoByUID.length > 0 ? (
+            <ul className="space-y-2">
+              {todoByUID.map((todo) => (
+                <li key={todo.id} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                  <span className={todo.completed ? "line-through text-gray-500" : ""}>
+                    {todo.title}
+                  </span>
+                  <span className={`px-2 py-1 rounded text-sm ${todo.completed ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}`}>
+                    {todo.completed ? "Completed" : "Pending"}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-500">No todos found for this user.</p>
+          )}
+        </div>
 
         {/* Back Button */}
         <button

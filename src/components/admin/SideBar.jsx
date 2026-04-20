@@ -7,9 +7,17 @@ import {
   LogOut,
   HomeIcon,
 } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase/firebaseConfig/FirebaseConfig";
 
 export default function SideBar() {
+  const navigate = useNavigate();
+    const handleLogout = async () => {
+  signOut(auth).then(()=>{
+    navigate("/")
+  })
+  };
   return (
     <aside className="w-64 bg-white shadow-lg p-5">
       <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
@@ -43,7 +51,7 @@ export default function SideBar() {
       </nav>
 
       <div className="mt-10 border-t pt-4">
-        <button className="flex items-center gap-2 text-red-500 hover:text-red-600">
+        <button onClick={handleLogout} className="flex items-center gap-2 text-red-500 hover:text-red-600">
           <LogOut size={18} /> Logout
         </button>
       </div>
