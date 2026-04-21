@@ -38,8 +38,8 @@ fetchTodo()
 },[userUID])
 // 
 useEffect(()=>{
-  console.log(todos);
-  console.log(userUID)
+  // console.log(todos);
+  // console.log(userUID)
   
 },[todos,userUID])
 // 

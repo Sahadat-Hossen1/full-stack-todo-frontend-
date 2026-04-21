@@ -5,9 +5,11 @@ import useTodo from "../../context/todo/useTodo";
 export default function AddTodo() {
   const {user}=useAuth();
   const{todos,setTodos}=useTodo()
-  const handleSubmit = (event) => {
+ console.log(todos);
+ 
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    const form = event.target;
+    const form = event.currentTarget;
     const title = form.title.value;
     if(!user?.uid){
       alert("Please login to add todo")
@@ -29,13 +31,44 @@ export default function AddTodo() {
       body:JSON.stringify(newTodo)
     }).then(res=>res.json())
     .then((data)=>{
-      console.log("success from add todo", data);
+      // console.log("success from add todo", data);
       setTodos([...todos,data])
-      form.reset()
+      // form.reset()
     }).catch(error=>{
       console.log("error from add todo", error.message);
     })
   };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const formData = e.target;
+  //   const title = formData.title.value;
+  //   // const password = formData.password.value;
+  //   // console.log({ title, password })
+  //   const newUser = { title, id: Date.now() ,userUID:user?.uid};
+  //   // console.log(title);
+  //      debugger
+  //   if (title) {
+  //     fetch("http://localhost:3000/todos", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(newUser),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log("User added:", data);
+  //         setTodos(prev=> [...prev, data]); // Update the users state with the new user
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error adding user:", error);
+  //       });
+
+  //     formData.reset(); // Reset the form after submission
+  //   }
+
+  //   //sending user data to server
+  // };
   return (
     <div>
       <h2 className="text-2xl text-center font-bold mb-4">Add New Todo</h2>

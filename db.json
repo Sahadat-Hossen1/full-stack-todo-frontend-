@@ -75,146 +75,46 @@
         "lastLoginAt": "1776350443082"
       },
       "role": "user"
+    },
+    {
+      "id": "1776267354903",
+      "uid": "iyvmjdYe7VgPPvUKw9lEAPPO70C2",
+      "displayName": "Sahadat Hossen",
+      "email": "sahadat.hossen1435@gmail.com",
+      "photoURL": "https://lh3.googleusercontent.com/a/ACg8ocJktUpMhQQI_eYJ-rhIhnCdvb6fWxKCMJMNgUaLEN45ur8JIA=s96-c",
+      "phoneNumber": null,
+      "metadata": {
+        "createdAt": "1776267354903",
+        "lastLoginAt": "1776762840463"
+      },
+      "role": "user"
+    },
+    {
+      "id": "1776763510659",
+      "uid": "is0YncpcfaPElKLl7bWSISNifrC2",
+      "displayName": "sagor",
+      "email": "sagor@gmail.com",
+      "photoURL": null,
+      "phoneNumber": null,
+      "metadata": {
+        "createdAt": "1776763510659",
+        "lastLoginAt": "1776763510659"
+      },
+      "role": "user"
     }
   ],
   "todos": [
     {
-      "id": "1",
-      "title": "Learn React basics",
+      "id": 1776763969414,
+      "title": "complete todo project ",
       "completed": false,
-      "userUID": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
+      "userUID": "is0YncpcfaPElKLl7bWSISNifrC2"
     },
     {
-      "id": "2",
-      "title": "Practice JavaScript",
-      "completed": true,
-      "userUID": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
-    },
-    {
-      "id": "3",
-      "title": "Build todo app",
+      "id": 1776763991445,
+      "title": "complete full stack todo project with authentication",
       "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "4",
-      "title": "Read programming blog",
-      "completed": true,
-      "userUID": "wdKTuIlLvGQVp9TW2A8bDZVgbul1"
-    },
-    {
-      "id": "5",
-      "title": "Go to gym",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "6",
-      "title": "Finish Node.js course",
-      "completed": true,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "7",
-      "title": "Write API",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "8",
-      "title": "Fix bugs",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "9",
-      "title": "Study for exam",
-      "completed": true,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "10",
-      "title": "Complete assignment",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "11",
-      "title": "Watch tutorial",
-      "completed": true,
-      "userUID": 3
-    },
-    {
-      "id": "12",
-      "title": "Revise notes",
-      "completed": false,
-      "userUID": 3
-    },
-    {
-      "id": "13",
-      "title": "Buy groceries",
-      "completed": false,
-      "userUID": 4
-    },
-    {
-      "id": "14",
-      "title": "Clean room",
-      "completed": true,
-      "userUID": 4
-    },
-    {
-      "id": "15",
-      "title": "Cook dinner",
-      "completed": false,
-      "userUID": 4
-    },
-    {
-      "id": "16",
-      "title": "Call friend",
-      "completed": true,
-      "userUID": 4
-    },
-    {
-      "id": "17",
-      "title": "Learn MongoDB",
-      "completed": false,
-      "userUID": 5
-    },
-    {
-      "id": "18",
-      "title": "Setup backend",
-      "completed": true,
-      "userUID": 5
-    },
-    {
-      "id": "19",
-      "title": "Test API endpoints",
-      "completed": false,
-      "userUID": 5
-    },
-    {
-      "id": "20",
-      "title": "Deploy project",
-      "completed": false,
-      "userUID": 5
-    },
-    {
-      "id": "1776726199259",
-      "title": "complete todo project",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": "1776726333971",
-      "title": "take prayer daily 5 time",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
-    },
-    {
-      "id": 1776726805047,
-      "title": "a",
-      "completed": false,
-      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
+      "userUID": "is0YncpcfaPElKLl7bWSISNifrC2"
     }
   ]
 }

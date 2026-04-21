@@ -12,7 +12,7 @@ export default function Login() {
   // Handle form submission
   const handleLogin=(e)=>{
     e.preventDefault()
-const formData=e.target;
+const formData=e.currentTarget;
 const email=formData.email.value;
 const password=formData.password.value;
 
@@ -93,6 +93,7 @@ signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
           {/* Forgot password */}
           <div className="text-right text-sm">
             <button
+              type="button"
               className="text-indigo-600 hover:underline"
             >
               Forgot Password?

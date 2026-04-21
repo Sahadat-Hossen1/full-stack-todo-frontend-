@@ -19,7 +19,7 @@ export default function Registration() {
     // Handle form submission
     const handleRegistration=(e)=>{
         e.preventDefault()
-    const formData=e.target;
+    const formData=e.currentTarget;
     const name=formData.name.value;
     const email=formData.email.value;
     const password=formData.password.value;
@@ -133,6 +133,7 @@ export default function Registration() {
           {/* Forgot password */}
           <div className="text-right text-sm">
             <button
+              type="button"
               className="text-indigo-600 hover:underline"
             >
               Forgot Password?
