@@ -105,15 +105,21 @@
   ],
   "todos": [
     {
-      "id": 1776763969414,
-      "title": "complete todo project ",
-      "completed": false,
-      "userUID": "is0YncpcfaPElKLl7bWSISNifrC2"
+      "id": "1776862937360",
+      "title": "sdasdf",
+      "isCompleted": true,
+      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
     },
     {
-      "id": 1776763991445,
-      "title": "complete full stack todo project with authentication",
-      "completed": false,
+      "id": "1776862937382",
+      "title": "sdasdf",
+      "isCompleted": false,
+      "userUID": "iyvmjdYe7VgPPvUKw9lEAPPO70C2"
+    },
+    {
+      "id": "1776871289816",
+      "title": "complete edit button",
+      "isCompleted": true,
       "userUID": "is0YncpcfaPElKLl7bWSISNifrC2"
     }
   ]

@@ -5,7 +5,6 @@ import useTodo from "../../context/todo/useTodo";
 export default function AddTodo() {
   const {user}=useAuth();
   const{todos,setTodos}=useTodo()
- console.log(todos);
  
   const handleSubmit =async (event) => {
     event.preventDefault();
@@ -18,7 +17,7 @@ export default function AddTodo() {
     const newTodo={
       title,
       id:Date.now(),
-      completed:false,
+      isCompleted:false,
       userUID:user?.uid
 
     }

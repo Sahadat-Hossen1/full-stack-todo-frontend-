@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "json-server": "json-server --watch db.json --port 3000",
-    "start": "concurrently \"npm run json-server\" \"npm run dev\""
+    "start": "concurrently \"npm run json-server\" \"npm run dev\"",
+    "both":"concurrently \"npm run build\" \"npm run preview\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
