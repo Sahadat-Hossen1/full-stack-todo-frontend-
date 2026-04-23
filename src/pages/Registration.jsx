@@ -39,7 +39,12 @@ export default function Registration() {
             email,
             photoURL:userCredential.user.photoURL,
             phoneNumber:userCredential.user.phoneNumber,
-            metadata:userCredential.user.metadata,
+            metadata:{
+              createdAt:userCredential.user.metadata.createdAt,
+              lastLogin:userCredential.user.metadata.lastLoginAt,
+              lastLogout:userCredential.user.metadata.lastSignInTime,
+              lastSignInTime:userCredential.user.metadata.lastSignInTime
+            },
             role:"user"
           }
           if(!isAlreadyExist){

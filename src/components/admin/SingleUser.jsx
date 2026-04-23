@@ -12,7 +12,7 @@ export default function SingleUser() {
   const {AllTodosData}=useAdmin()
  
   const todoByUID = singleUser.length > 0 ? AllTodosData.filter((todo) => todo?.userUID === singleUser[0]?.uid) : [];
-  console.log(todoByUID);
+  // console.log(todoByUID);
   
   
 
@@ -22,6 +22,7 @@ useEffect(()=>{
     const response=await fetch(`http://localhost:3000/users?id=${id}`)
     const data=await response.json()
     // console.log(data[0]?.metadata?.createdAt);
+    console.log(data);
     
     setSingleUser(data)
   }
@@ -72,7 +73,7 @@ useEffect(()=>{
           <p>
             <span className="font-medium">
               Last Sign In:
-            {user?.metadata?.lastLoginAt ? new Date(Number(user?.metadata?.lastLoginAt)).toLocaleString() : "Never"}
+            {user?.metadata?.lastLogin ? new Date(Number(user?.metadata?.lastLogin)).toLocaleString() : "Never"}
               </span>{" "}
           </p>
         </div>

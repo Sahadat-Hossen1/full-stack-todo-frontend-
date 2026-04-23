@@ -18,7 +18,7 @@ export default function GoogleSignIn() {
           //  conent with google signin methode
           signInWithPopup(auth,googleProvider).then(async(result)=>{
             const user=result.user;
-            // console.log(user);
+            console.log(user);
             if (user.uid) {
               const isAlreadyExist=AllUsersData.find((user)=>user.uid === result.user.uid);
               const newUser={
@@ -28,7 +28,12 @@ export default function GoogleSignIn() {
                 email:user.email,
                 photoURL:user.photoURL,
                 phoneNumber:user.phoneNumber,
-                metadata:user.metadata,
+                 metadata:{
+              createdAt:user.metadata.createdAt,
+              lastLogin:user.metadata.lastLoginAt,
+              lastLogout:user.metadata.lastSignInTime,
+              lastSignInTime:user.metadata.lastSignInTime
+            },
                 role:"user"
               }
               if(!isAlreadyExist){
@@ -39,6 +44,25 @@ export default function GoogleSignIn() {
                 })
               }else{
                 console.log("user already exist");
+                // Find the user's id from AllUsersData
+                const existingUser = AllUsersData.find((u) => u.uid === user.uid);
+                if (existingUser) {
+                  fetch(`http://localhost:3000/users/${existingUser.id}`, {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({metadata:{
+                      createdAt: user.metadata.createdAt,
+                      lastLogin: user.metadata.lastLoginAt,
+                      lastLogout: user.metadata.lastSignInTime,
+                      lastSignInTime: user.metadata.lastSignInTime,
+                    }}),
+                  })
+                    .then((res) => res.json())
+                    .then((data) => console.log("User updated:", data))
+                    .catch((err) =>
+                      console.log("error from patch lastLogin", err),
+                    );
+                }
                 navigate('/')
               }
             }

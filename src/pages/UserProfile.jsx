@@ -4,15 +4,15 @@ import { signOut } from "firebase/auth";
 import auth from "../firebase/firebaseConfig/FirebaseConfig";
 import useAuth from "../context/auth/useAuth";
 import { NavLink, useNavigate } from "react-router-dom";
-import useTodo from './../context/todo/useTodo';
+import useTodo from "./../context/todo/useTodo";
 
 export default function UserProfile() {
   const { user, isLoading } = useAuth();
-  const{todos}=useTodo()
+  const { todos } = useTodo();
   // console.log(user);
-  
-  // 
-const navigate=useNavigate()
+
+  //
+  const navigate = useNavigate();
   // destructure safely
   const {
     displayName,
@@ -22,13 +22,13 @@ const navigate=useNavigate()
     phoneNumber,
     emailVerified,
     role,
-    metadata,
+    
   } = user || {};
 
   const handleLogout = async () => {
-  signOut(auth).then(()=>{
-    navigate("/")
-  })
+    signOut(auth).then(() => {
+      navigate("/");
+    });
   };
 
   if (isLoading) {
@@ -50,11 +50,10 @@ const navigate=useNavigate()
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-lg overflow-hidden">
-        
         {/* Cover */}
         <div className="h-40 bg-gradient-to-r from-indigo-500 to-blue-500 relative">
           <img
-            src={photoURL||displayName.charAt(0).toUpperCase()}
+            src={photoURL || displayName.charAt(0).toUpperCase()}
             // src={photoURL || "https://i.pravatar.cc/150"}
             alt="profile"
             className="w-32 h-32 rounded-full border-4 border-white absolute -bottom-16 left-6 object-cover"
@@ -63,7 +62,6 @@ const navigate=useNavigate()
 
         {/* Content */}
         <div className="pt-20 pb-6 px-6">
-          
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -112,7 +110,6 @@ const navigate=useNavigate()
 
           {/* Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-            
             {/* Email */}
             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
               <Mail className="text-indigo-500" />
@@ -136,9 +133,7 @@ const navigate=useNavigate()
             {/* UID */}
             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl md:col-span-2">
               <span className="text-gray-500 text-sm">UID:</span>
-              <span className="text-gray-700 text-sm break-all">
-                {uid}
-              </span>
+              <span className="text-gray-700 text-sm break-all">{uid}</span>
             </div>
           </div>
 
@@ -156,22 +151,39 @@ const navigate=useNavigate()
           {/* Stats */}
           <div className="flex justify-between mx-[30%] gap-4 mt-6 text-center">
             <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-500">{todos?.length} </h4>
+              <h4 className="text-xl font-bold text-indigo-500">
+                {todos?.length}{" "}
+              </h4>
               <p className="text-gray-500 text-sm">Todos</p>
             </div>
 
-            
-
             <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-sm font-bold text-indigo-500">{metadata.creationTime} </h4>
+              <h4 className="text-sm font-bold text-indigo-500">
+                {/* {metadata.createdAt
+                  ? new Date(metadata.createdAt).toLocaleString()
+                  : "never"} */}
+                {new Date(Number(user?.metadata?.createdAt)).toLocaleString()}
+              </h4>
               <p className="text-gray-500 text-sm">Created At </p>
             </div>
+
             <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-sm font-bold text-indigo-500">{metadata.lastSignInTime} </h4>
+              <h4 className="text-sm font-bold text-indigo-500">
+                {new Date(Number(user?.metadata?.lastLogin)).toLocaleString()}
+              </h4>
               <p className="text-gray-500 text-sm">last login </p>
             </div>
+            <div className="p-4 bg-gray-50 rounded-xl">
+              <h4 className="text-sm font-bold text-indigo-500">
+                {user?.metadata?.lastLogout
+                  ? new Date(user.metadata.lastLogout).toLocaleString("en-BD", {
+                      timeZone: "Asia/Dhaka",
+                    })
+                  : "Never"}
+              </h4>
+              <p className="text-gray-500 text-sm">last logout </p>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
