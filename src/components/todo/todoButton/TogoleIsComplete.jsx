@@ -2,15 +2,12 @@ import React from "react";
 import useTodo from "../../../context/todo/useTodo";
 
 export default function TogoleIsComplete({ item }) {
-    const {todos,setTodos}=useTodo()
-    const handleIsCompleted = (id, curentStatus) => {
-        // console.log(item);
-        
-        // alert(id)
+  const { todos, setTodos } = useTodo();
+  const handleIsCompleted = (id, curentStatus) => {
     const updatedStatus = !curentStatus;
     const updatedTodos = todos.map((item) => {
-        console.log(id);
-        
+      // console.log(id);
+
       return item.id === id ? { ...item, isCompleted: updatedStatus } : item;
     });
     setTodos(updatedTodos);

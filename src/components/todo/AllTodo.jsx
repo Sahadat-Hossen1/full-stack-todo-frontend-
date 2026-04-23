@@ -7,28 +7,38 @@ import Edit from "./todoButton/Edit";
 export default function AllTodo() {
   // const {todo,isLoading}=useTodo()
   const [editingID, setEditingID] = useState(null);
-  const { todos } = useTodo();
-
-  
-  //handle edit title
-  // const handleEdit = (item) => {
-  //   setEditingID(item.id);
-  //   setUpdatedTitle(item.title);
-  // };
-  // handle update title
-  // const handleUpdate = (id) => {
-  //   if (!updatedTitle.trim()) return;
-
-  //   const updatedTodo = todos.map((item) =>
-  //     item.id === id ? { ...item, title: updatedTitle } : item,
-  //   );
-  //   // console.log(updatedTodo)
-  //   setTodos(updatedTodo);
-  //   setEditingID(null);
-  // };
+  //
+  const { todos, currentFilter, setCurrentFilter } = useTodo();
 
   return (
     <div>
+      {/* sorting todos by boolean */}
+      {/* <select value={currentFilter} onChange={(e)=>setCurrentFilter(e.target.value)}
+        
+        >
+        
+        <option value="all">All</option>
+        <option value="completed"> Completed</option>
+        <option value="pendding">Pendding</option>
+      </select> */}
+      <div className="flex justify-center my-6">
+        <div className="flex gap-2">
+        {["all", "completed", "pendding"].map((filter) => (
+          <button
+            key={filter}
+            onClick={() => setCurrentFilter(filter)}
+            className={`px-4 py-1.5 rounded-full text-sm capitalize transition 
+        ${
+          currentFilter === filter
+            ? "bg-blue-500 text-white"
+            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+        }`}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+      </div>
       <div className="min-h-screen bg-gray-100 p-6">
         {todos?.length > 0 ? (
           <section className="max-w-2xl mx-auto space-y-4">
@@ -47,7 +57,7 @@ export default function AllTodo() {
                     }
                     className="w-5 h-5 accent-blue-500 cursor-pointer"
                   /> */}
-                  <TogoleIsComplete item={item}/>
+                  <TogoleIsComplete item={item} />
                   {editingID === item.id ? null : (
                     <h3 className="text-gray-800 text-base font-medium">
                       {item.title}
@@ -56,44 +66,15 @@ export default function AllTodo() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  {/* {editingID === item.id ? (
-                    <div className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg shadow-sm">
-                      <input
-                        type="text"
-                        value={updatedTitle}
-                        onChange={(e) => setUpdatedTitle(e.target.value)}
-                        placeholder="Edit todo..."
-                        className="px-3 py-1 border rounded-md outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-                      />
-
-                      <button
-                        onClick={() => handleUpdate(item.id)}
-                        
-                        className="px-3 py-1 text-sm rounded-md bg-green-500 text-white hover:bg-green-600 transition"
-                      >
-                        Save
-                      </button>
-
-                      <button
-                        onClick={() => setEditingID(null)}
-                        className="px-3 py-1 text-sm rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => handleEdit(item)}
-                      className="px-3 py-1 text-sm rounded-md bg-blue-500 text-white hover:bg-blue-600 transition shadow-sm"
-                    >
-                      Edit
-                    </button>
-                  )} */}
                   {/* edit button */}
-                  <Edit item={item} setEditingID={setEditingID} editingID={editingID}/>
+                  <Edit
+                    item={item}
+                    setEditingID={setEditingID}
+                    editingID={editingID}
+                  />
 
-              {/* delete button */}
-              <Delete item={item}/>
+                  {/* delete button */}
+                  <Delete item={item} />
                 </div>
               </div>
             ))}

@@ -1,9 +1,9 @@
-add todo ,
-show todos,
-togle active pending 
-if users not login then noOne could add new todo 
+add todo (ok),
+show todos (ok),
+togle active pending (ok) 
+if users not login then noOne could add new todo  (ok)
 google signin (ok),
-also could not see his/him todo,
+also could not see his/him todo (ok),
 also dont visit his profile page (ok),
 without admin no one can visite admin profile page or admin dasboard  (ok)
 admin can be monitor all users in adminUsers page  (ok)
