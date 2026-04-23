@@ -22,7 +22,6 @@ export default function UserProfile() {
     phoneNumber,
     emailVerified,
     role,
-    
   } = user || {};
 
   const handleLogout = async () => {
@@ -137,51 +136,55 @@ export default function UserProfile() {
             </div>
           </div>
 
-          {/* About */}
-          {/* <div className="mt-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
-              About
-            </h3>
-            <p className="text-gray-600">
-              Passionate MERN stack developer. Loves building web apps,
-              solving problems, and learning new technologies.
-            </p>
-          </div> */}
+          {/* Divider */}
+          <div className="my-6 border-b border-gray-100"></div>
 
           {/* Stats */}
-          <div className="flex justify-between mx-[30%] gap-4 mt-6 text-center">
-            <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-xl font-bold text-indigo-500">
-                {todos?.length}{" "}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            {/* Todos */}
+            <div className="p-4 bg-white border rounded-2xl shadow-sm hover:shadow-md transition">
+              <p className="text-xs text-gray-400">Todos</p>
+              <h4 className="text-2xl font-bold text-indigo-600">
+                {todos?.length || 0}
               </h4>
-              <p className="text-gray-500 text-sm">Todos</p>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-sm font-bold text-indigo-500">
-                {/* {metadata.createdAt
-                  ? new Date(metadata.createdAt).toLocaleString()
-                  : "never"} */}
-                {new Date(Number(user?.metadata?.createdAt)).toLocaleString()}
+            {/* Created At */}
+            <div className="p-4 bg-white border rounded-2xl shadow-sm hover:shadow-md transition">
+              <p className="text-xs text-gray-400">Created</p>
+              <h4 className="text-sm font-semibold text-gray-700">
+                {new Date(Number(user?.metadata?.createdAt)).toLocaleString(
+                  "en-BD",
+                  {
+                    timeZone: "Asia/Dhaka",
+                  },
+                )}
               </h4>
-              <p className="text-gray-500 text-sm">Created At </p>
             </div>
 
-            <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-sm font-bold text-indigo-500">
-                {new Date(Number(user?.metadata?.lastLogin)).toLocaleString()}
+            {/* Last Login */}
+            <div className="p-4 bg-white border rounded-2xl shadow-sm hover:shadow-md transition">
+              <p className="text-xs text-gray-400">Last Login</p>
+              <h4 className="text-sm font-semibold text-gray-700">
+                {new Date(Number(user?.metadata?.lastLogin)).toLocaleString(
+                  "en-BD",
+                  {
+                    timeZone: "Asia/Dhaka",
+                  },
+                )}
               </h4>
-              <p className="text-gray-500 text-sm">last login </p>
             </div>
-            <div className="p-4 bg-gray-50 rounded-xl">
-              <h4 className="text-sm font-bold text-indigo-500">
+
+            {/* Last Logout */}
+            <div className="p-4 bg-white border rounded-2xl shadow-sm hover:shadow-md transition">
+              <p className="text-xs text-gray-400">Last Logout</p>
+              <h4 className="text-sm font-semibold text-gray-700">
                 {user?.metadata?.lastLogout
                   ? new Date(user.metadata.lastLogout).toLocaleString("en-BD", {
                       timeZone: "Asia/Dhaka",
                     })
                   : "Never"}
               </h4>
-              <p className="text-gray-500 text-sm">last logout </p>
             </div>
           </div>
         </div>

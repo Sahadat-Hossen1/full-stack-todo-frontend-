@@ -103,6 +103,21 @@
       "lastLogin": "1776922473639",
       "lastLogout": "Thu, 23 Apr 2026 05:34:33 GMT",
       "lastSignInTime": "Thu, 23 Apr 2026 05:34:33 GMT"
+    },
+    {
+      "id": "1776923336503",
+      "uid": "yP28lxhoCSWgUDl4hy39YVNat1n2",
+      "displayName": "hafsa",
+      "email": "hafsa@gmail.com",
+      "photoURL": null,
+      "phoneNumber": null,
+      "metadata": {
+        "createdAt": "1776923336503",
+        "lastLogin": "1776924001802",
+        "lastLogout": "Thu, 23 Apr 2026 06:00:01 GMT",
+        "lastSignInTime": "Thu, 23 Apr 2026 06:00:01 GMT"
+      },
+      "role": "user"
     }
   ],
   "todos": [

@@ -31,20 +31,24 @@ export default function Login() {
           const isAlreadyExist = AllUsersData.find(
             (user) => user.uid === userCredential.user.uid,
           );
-          if (!isAlreadyExist) {
-            setAllUsersData([...AllUsersData, userCredential.user]);
-            fetch(`http://localhost:3000/users/${userCredential.user.uid}`, {
+          if (isAlreadyExist) {
+            fetch(`http://localhost:3000/users/${isAlreadyExist.id}`, {
               method: "PATCH",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({metadata:{
-                      createdAt: user.metadata.createdAt,
-                      lastLogin: user.metadata.lastLoginAt,
-                      lastLogout: user.metadata.lastSignInTime,
-                      lastSignInTime: user.metadata.lastSignInTime,
-                    }}),
+                createdAt: user.metadata.createdAt,
+                lastLogin: user.metadata.lastLoginAt,
+                lastLogout: user.metadata.lastSignInTime,
+                lastSignInTime: user.metadata.lastSignInTime,
+              }}),
             })
-              .then((res) => res.json())
-              .then((data) => console.log(data))
+            .then((res) => res.json())
+            .then((data) =>{
+            setAllUsersData([...AllUsersData, data]);
+            console.log(data);
+            
+
+              })
               .catch((err) =>
                 console.log("error from patch lastLogin", err.message),
               );
