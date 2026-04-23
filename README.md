@@ -1,17 +1,20 @@
 # Full Stack Todo Frontend
 
-A modern, full-featured Todo application built with React and Vite. This project includes user authentication, admin dashboard, and comprehensive todo management capabilities.
+A modern, full-featured Todo application built with React and Vite. This project includes comprehensive user authentication (Google Sign-in and email/password), admin dashboard, todo management with sorting capabilities, and automatic user metadata tracking. Features a responsive design with Tailwind CSS and robust state management using React Context API.
 
 ## 🌟 Features
 
-- **User Authentication**: Google Sign-in integration with Firebase
+- **User Authentication**: Google Sign-in and email/password authentication with Firebase
 - **Todo Management**: Create, read, update, and delete todos
-- **Todo Status**: Mark todos as complete/incomplete
-- **User Profiles**: Personalized user profile pages
-- **Admin Dashboard**: Administrative panel for user management
+- **Todo Status**: Mark todos as complete/incomplete with toggle functionality
+- **Todo Sorting**: Sort todos by various criteria for better organization
+- **User Profiles**: Personalized user profile pages with status updates
+- **Admin Dashboard**: Administrative panel for user management and oversight
 - **Responsive Design**: Mobile-friendly UI with Tailwind CSS
 - **Real-time Updates**: Context API for state management
 - **Protected Routes**: Private routes for authenticated users and admins
+- **User Metadata Tracking**: Automatic tracking of login times, sign-in times, and user activity
+- **Component Organization**: Well-structured components with separate button components
 
 ## 🛠️ Tech Stack
 
@@ -24,6 +27,8 @@ A modern, full-featured Todo application built with React and Vite. This project
 - **Icons**: Lucide React 1.8.0
 - **Code Quality**: ESLint 9.39.4
 - **Development Server**: JSON Server (db.json)
+- **Process Management**: Concurrently 9.2.1
+- **Environment**: Node.js v16+ with npm
 
 ## 📋 Prerequisites
 
@@ -48,7 +53,9 @@ Before you begin, ensure you have the following installed:
    ```
 
 3. **Configure Firebase**
-   - Update `src/firebase/firebaseConfig/FirebaseConfig.js` with your Firebase credentials
+   - Create a `.env` file in the root directory
+   - Add your Firebase configuration variables to the `.env` file
+   - Update `src/firebase/firebaseConfig/FirebaseConfig.js` to use environment variables
    - Get your credentials from [Firebase Console](https://console.firebase.google.com)
 
 ### Running the Project
@@ -153,7 +160,18 @@ The project uses Firebase for authentication:
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
 2. Enable Google Sign-in authentication method
 3. Copy your Firebase configuration
-4. Update `src/firebase/firebaseConfig/FirebaseConfig.js`
+4. Create a `.env` file in the root directory with your Firebase credentials:
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+5. Update `src/firebase/firebaseConfig/FirebaseConfig.js` to use these environment variables
 
 ## 📝 Context API Usage
 
@@ -176,6 +194,21 @@ For development, JSON Server is configured to run on **port 3000**:
 - Used for mock backend data during development
 - Automatically starts with `npm start`
 
+## 🆕 Recent Updates
+
+### Version 3 Features
+- **Enhanced User Metadata**: Automatic tracking and updating of user login times and sign-in timestamps
+- **Todo Sorting**: Added sorting functionality for better todo organization
+- **Component Refactoring**: Separated todo action buttons into individual components for better maintainability
+- **User Profile Enhancements**: Improved user profile UI with status updates
+- **Authentication Improvements**: Better handling of existing user metadata during email/password login
+- **Environment Configuration**: Firebase configuration moved to `.env` file for better security
+
+### Authentication Features
+- **Dual Authentication**: Support for both Google Sign-in and email/password authentication
+- **Session Tracking**: Automatic updates of last login and sign-in times for existing users
+- **User Metadata Management**: Comprehensive tracking of user activity and session data
+
 ## 🤝 Contributing
 
 Contributions are welcome! To contribute:
@@ -195,6 +228,11 @@ For issues and questions, please create an issue in the [GitHub repository](http
 
 ## 🎯 Future Enhancements
 
+- [x] User metadata tracking (login times, sign-in timestamps)
+- [x] Todo sorting functionality
+- [x] Component organization (separate button components)
+- [x] Enhanced user profile UI
+- [x] Environment-based Firebase configuration
 - [ ] Add TypeScript support
 - [ ] Implement unit tests
 - [ ] Add dark mode support
@@ -202,6 +240,8 @@ For issues and questions, please create an issue in the [GitHub repository](http
 - [ ] Real-time notifications
 - [ ] Todo categories and tags
 - [ ] Export/Import todos
+- [ ] Advanced user analytics
+- [ ] Todo sharing functionality
 
 ---
 
