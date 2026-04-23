@@ -17,9 +17,9 @@ const email=formData.email.value;
 const password=formData.password.value;
 
 signInWithEmailAndPassword(auth,email,password).then((userCredential)=>{
-  const user=userCredential.user;
+  const user=userCredential.user;  
   if(user){
-    console.log("Login successful")
+    // console.log("Login successful")
     navigate('/')
     setErrorMessage('');
   }

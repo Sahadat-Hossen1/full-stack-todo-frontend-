@@ -46,11 +46,11 @@ export default function TodoProvider({ children }) {
     fetchTodo();
   }, [userUID,currentFilter]);
   //
-  useEffect(() => {
-    // console.log(todos);
-    // console.log(userUID)
-    console.log(currentFilter);
-  }, [todos, userUID, currentFilter]);
+  // useEffect(() => {
+  //   // console.log(todos);
+  //   // console.log(userUID)
+  //   // console.log(currentFilter);
+  // }, [todos, userUID, currentFilter]);
   //
   const todoInfo = {
     todos,

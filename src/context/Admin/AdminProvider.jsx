@@ -31,7 +31,7 @@ export default function AdminProvider({children}) {
       };
       GetAllData();
     } catch (error) {
-      console.log(error);
+      console.log("error from get all users & todos data", error.message );
     }
   }, []);
 
