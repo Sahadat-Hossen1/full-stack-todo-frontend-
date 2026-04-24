@@ -135,15 +135,7 @@ export default function Registration() {
             </div>
           </div>
          
-          {/* Forgot password */}
-          <div className="text-right text-sm">
-            <button
-              type="button"
-              className="text-indigo-600 hover:underline"
-            >
-              Forgot Password?
-            </button>
-          </div>
+         
          {
           errorMessage && <p className="text-red-500">{errorMessage}</p>
          }
@@ -162,18 +154,6 @@ export default function Registration() {
             <div className="flex-1 h-px bg-gray-300"></div>
           </div>
 
-          {/* Google Login */}
-          {/* <button
-            type="button"
-            className="w-full py-3 border rounded-xl flex items-center justify-center gap-2 hover:bg-gray-50 transition"
-          >
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="google"
-              className="w-5 h-5"
-            />
-            Continue with Google
-          </button> */}
           <GoogleSignIn/>
         </form>
 

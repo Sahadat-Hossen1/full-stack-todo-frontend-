@@ -5,11 +5,13 @@ import auth from "./../firebase/firebaseConfig/FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import GoogleSignIn from "../components/GoogleSignin/GoogleSignIn";
 import useAdmin from "../context/Admin/useAdmin";
+import ForgetPassword from "../components/forgetPassword/ForgetPassword";
 
 export default function Login() {
   //
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  // const[email,setEmail]=useState('');
   //
   const { AllUsersData,setAllUsersData } = useAdmin();
   //
@@ -86,6 +88,8 @@ export default function Login() {
                 placeholder="Enter your email"
                 name="email"
                 className="w-full p-2 outline-none bg-transparent"
+                // for forget passwordword
+                // onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -113,11 +117,9 @@ export default function Login() {
           </div>
 
           {/* Forgot password */}
-          <div className="text-right text-sm">
-            <button type="button" className="text-indigo-600 hover:underline">
-              Forgot Password?
-            </button>
-          </div>
+          {/* <div className="text-right text-sm">
+           <ForgetPassword email={email} setErrorMessage={setErrorMessage}/>
+          </div> */}
           {/* error messege show */}
           <p className="text-red-500 text-sm">{errorMessage}</p>
           {/* Login button */}

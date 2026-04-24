@@ -15,3 +15,4 @@ and
   lastLogin||SignIn info update korbo (ok)
  and .env file use korbo (ok)
  there will be adding debounce
+to solve error after dyploy in vercel 

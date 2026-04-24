@@ -32,7 +32,7 @@ export default function AddTodo() {
     .then((data)=>{
       // console.log("success from add todo", data);
       setTodos([...todos,data])
-      // form.reset()
+      form.reset()
     }).catch(error=>{
       console.log("error from add todo", error.message);
     })
