@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import AdminContext from './AdminContext'
+// import apiEndPoint from '../../apiEndPoint';
 
 export default function AdminProvider({children}) {
       const [AllUsersData, setAllUsersData] = useState([]);
   const [AllTodosData, setAllTodosData] = useState([]);
   const [loading, setLoading] = useState(false);
   const GetAllUsers = async () => {
-    const res = await fetch("http://localhost:3000/users");
+    const res = await fetch(`http://localhost:3000/api/users`);
     const data = await res.json();
     // console.log(data);
 
     return data;
   };
   const GetAllTodos = async () => {
-    const res = await fetch("http://localhost:3000/todos");
+    const res = await fetch(`http://localhost:3000/api/todos`);
     const data = await res.json();
     // console.log(data);
 

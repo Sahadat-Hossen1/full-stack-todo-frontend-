@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import useTodo from "../../../context/todo/useTodo";
+// import apiEndPoint from "../../../apiEndPoint";
 
 export default function Edit({ editingID, setEditingID, item }) {
   const [updatedTitle, setUpdatedTitle] = useState("");
   const { todos, setTodos } = useTodo();
   const handleEdit = (item) => {
-    setEditingID(item.id);
+    setEditingID(item._id);
     setUpdatedTitle(item.title);
   };
-  const handleUpdate = (id) => {
+  const handleUpdate = (_id) => {
     if (!updatedTitle.trim()) return;
 
     const updatedTodo = todos.map((item) =>
-      item.id === id ? { ...item, title: updatedTitle } : item,
+      item._id === _id ? { ...item, title: updatedTitle } : item,
     );
-    fetch(`http://localhost:3000/todos/${editingID}`, {
+    fetch(`http://localhost:3000/api/todos/${editingID}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +30,7 @@ export default function Edit({ editingID, setEditingID, item }) {
   };
   return (
     <>
-      {editingID === item.id ? (
+      {editingID === item._id ? (
         <div className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg shadow-sm">
           <input
             type="text"
@@ -40,7 +41,7 @@ export default function Edit({ editingID, setEditingID, item }) {
           />
 
           <button
-            onClick={() => handleUpdate(item.id)}
+            onClick={() => handleUpdate(item._id)}
             className="px-3 py-1 text-sm rounded-md bg-green-500 text-white hover:bg-green-600 transition"
           >
             Save

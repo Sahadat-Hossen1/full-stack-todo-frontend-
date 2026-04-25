@@ -1,12 +1,13 @@
 import React from "react";
 import useTodo from "../../../context/todo/useTodo";
+// import apiEndPoint from "../../../apiEndPoint";
 
 export default function Delete({ item}) {
   const { todos, setTodos } = useTodo();
-  const handleDelete = (id) => {
-    const DeletedTodo = todos.filter((item) => item.id !== id);
+  const handleDelete = (_id) => {
+    const DeletedTodo = todos.filter((item) => item._id !== _id);
     setTodos(DeletedTodo);
-    fetch(`http://localhost:3000/todos/${id}`, {
+    fetch(`http://localhost:3000/api/todos/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -16,7 +17,7 @@ export default function Delete({ item}) {
   return (
     <>
       <button
-        onClick={() => handleDelete(item.id)}
+        onClick={() => handleDelete(item._id)}
         className="px-3 py-1 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 transition shadow-sm"
       >
         Delete

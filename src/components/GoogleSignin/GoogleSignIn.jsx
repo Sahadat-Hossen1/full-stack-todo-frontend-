@@ -4,6 +4,7 @@ import auth from '../../firebase/firebaseConfig/FirebaseConfig'
 import { useNavigate } from 'react-router-dom'
 import useAdmin from '../../context/Admin/useAdmin'
 import PostUser from '../../services/PostUser'
+// import apiEndPoint from '../../apiEndPoint'
 
 export default function GoogleSignIn() {
   // 
@@ -22,7 +23,7 @@ export default function GoogleSignIn() {
             if (user.uid) {
               const isAlreadyExist=AllUsersData.find((user)=>user.uid === result.user.uid);
               const newUser={
-                id:user.metadata.createdAt,
+                // id:user.metadata.createdAt,
                 uid:user.uid,
                 displayName:user.displayName,
                 email:user.email,
@@ -47,7 +48,7 @@ export default function GoogleSignIn() {
                 // Find the user's id from AllUsersData
                 const existingUser = AllUsersData.find((u) => u.uid === user.uid);
                 if (existingUser) {
-                  fetch(`http://localhost:3000/users/${existingUser.id}`, {
+                  fetch(`http://localhost:3000/api/users/${existingUser._id}`, {
                     method: "PATCH",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({metadata:{

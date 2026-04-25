@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import GoogleSignIn from "../components/GoogleSignin/GoogleSignIn";
 import useAdmin from "../context/Admin/useAdmin";
 import ForgetPassword from "../components/forgetPassword/ForgetPassword";
+// import apiEndPoint from "../apiEndPoint";
 
 export default function Login() {
   //
@@ -34,7 +35,7 @@ export default function Login() {
             (user) => user.uid === userCredential.user.uid,
           );
           if (isAlreadyExist) {
-            fetch(`http://localhost:3000/users/${isAlreadyExist.id}`, {
+            fetch(`http://localhost:3000/api/users/${isAlreadyExist.id}`, {
               method: "PATCH",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({metadata:{

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoContext from "./TodoContext";
 import useAuth from "./../auth/useAuth";
+// import apiEndPoint from "../../apiEndPoint";
 
 export default function TodoProvider({ children }) {
   //
@@ -19,7 +20,7 @@ export default function TodoProvider({ children }) {
         setIsLoading(false);
         return;
       }
-      let api = `http://localhost:3000/todos?userUID=${userUID}`;
+      let api = `http://localhost:3000/api/todos?userUID=${userUID}`;
       if (currentFilter === "completed") {
         api += `&isCompleted=true`;
       } else if (currentFilter === "pendding") {

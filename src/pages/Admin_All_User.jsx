@@ -17,7 +17,7 @@ export default function Admin_All_User() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
         {AllUsersData.map((user) => (
           <div
-            key={user.id}
+            key={user._id}
             className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 p-6 border border-gray-100"
           >
             {/* Avatar */}
@@ -30,7 +30,7 @@ export default function Admin_All_User() {
                 <h2 className="text-lg font-semibold text-gray-800">
                   {user.displayName || "No Name"}
                 </h2>
-                <p className="text-sm text-gray-500">ID: {user.id}</p>
+                <p className="text-sm text-gray-500">ID: {user._id}</p>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ export default function Admin_All_User() {
 
             {/* Actions */}
             <div className="mt-5 flex gap-2">
-              <NavLink to={`/admin/allusers/${user.id}`} className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white text-sm py-2 rounded-lg transition text-center">
+              <NavLink to={`/admin/allusers/${user._id}`} className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white text-sm py-2 rounded-lg transition text-center">
                 View
               </NavLink>
               {/* <button className="flex-1 bg-red-100 hover:bg-red-200 text-red-600 text-sm py-2 rounded-lg transition">

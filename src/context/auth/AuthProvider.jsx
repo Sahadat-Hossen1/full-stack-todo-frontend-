@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "../../firebase/firebaseConfig/FirebaseConfig";
+// import apiEndPoint from "../../apiEndPoint";
 
 export default function AuthProvider({ children }) {
   const [isLoading, setisLoading] = useState(true);
@@ -20,7 +21,7 @@ export default function AuthProvider({ children }) {
 
       try {
         const res = await fetch(
-          `http://localhost:3000/users?uid=${currentUser.uid}`
+          `http://localhost:3000/api/users?uid=${currentUser.uid}`
         );
 
         const users = res.ok ? await res.json() : [];

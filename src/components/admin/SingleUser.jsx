@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useAdmin from './../../context/Admin/useAdmin';
+// import apiEndPoint from "../../apiEndPoint";
 // import SingleUser from './SingleUser';
 
 export default function SingleUser() {
-  const { id } = useParams();
+  const { _id } = useParams();
+  // const apiEndPoint=
   const navigate = useNavigate();
   // 
   const[singleUser,setSingleUser] =useState([])
@@ -19,7 +21,7 @@ export default function SingleUser() {
 //
 useEffect(()=>{
   const getSingleUser=async()=>{
-    const response=await fetch(`http://localhost:3000/users?id=${id}`)
+    const response=await fetch(`http://localhost:3000/api/todos/${_id}`)
     const data=await response.json()
     // console.log(data[0]?.metadata?.createdAt);
     console.log(data);
@@ -27,7 +29,7 @@ useEffect(()=>{
     setSingleUser(data)
   }
   getSingleUser()
-},[id])
+},[_id])
 // console.log(singleUser);
 
 
@@ -45,7 +47,7 @@ useEffect(()=>{
 
         {
           singleUser.map((user)=>(
-            <div className="space-y-3 text-gray-700" key={user.id}>
+            <div className="space-y-3 text-gray-700" key={user._id}>
           <p>
             <span className="font-medium">Name:</span>{" "}
             {user.displayName}

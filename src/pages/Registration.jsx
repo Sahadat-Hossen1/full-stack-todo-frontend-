@@ -33,7 +33,7 @@ export default function Registration() {
           console.log(user);
           const isAlreadyExist=AllUsersData.find((user)=>user.uid === userCredential.user.uid);
           const newUser={
-            id:userCredential.user.metadata.createdAt,
+            // id:userCredential.user.metadata.createdAt,
             uid:userCredential.user.uid,
             displayName:userCredential.user.displayName,
             email,

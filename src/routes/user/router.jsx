@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         element: <Admin_All_User />,
       },
       {
-        path: "allusers/:id",
+        path: "allusers/:_id",
         element: <SingleUser />,
       },
     ],

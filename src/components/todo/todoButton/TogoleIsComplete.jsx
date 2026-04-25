@@ -1,19 +1,20 @@
 import React from "react";
 import useTodo from "../../../context/todo/useTodo";
+// import apiEndPoint from "../../../apiEndPoint";
 
 export default function TogoleIsComplete({ item }) {
   const { todos, setTodos } = useTodo();
-  const handleIsCompleted = (id, curentStatus) => {
+  const handleIsCompleted = (_id, curentStatus) => {
     const updatedStatus = !curentStatus;
     const updatedTodos = todos.map((item) => {
-      // console.log(id);
+      // console.log(_id);
 
-      return item.id === id ? { ...item, isCompleted: updatedStatus } : item;
+      return item._id === _id ? { ...item, isCompleted: updatedStatus } : item;
     });
     setTodos(updatedTodos);
 
     // console.log(updatedTodo);
-    fetch(`http://localhost:3000/todos/${id}`, {
+    fetch(`http://localhost:3000/api/todos/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +30,7 @@ export default function TogoleIsComplete({ item }) {
       <input
         type="checkbox"
         checked={item.isCompleted}
-        onChange={() => handleIsCompleted(item.id, item.isCompleted)}
+        onChange={() => handleIsCompleted(item._id, item.isCompleted)}
         className="w-5 h-5 accent-blue-500 cursor-pointer"
       />
     </>
