@@ -1,4 +1,4 @@
-import apiEndPoint from "../apiEndPoint";
+// import apiEndPoint from "../apiEndPoint";
 
 const PostUser=async (data)=>{
     const res=await fetch('http://localhost:3000/api/users', {
@@ -9,6 +9,9 @@ const PostUser=async (data)=>{
         body:JSON.stringify(data),
     });
     const result=await res.json();
-    return result;
+    if (!res.ok) {
+        throw new Error(result?.message || "Failed to save user");
+    }
+    return result?.data;
 }
 export default PostUser

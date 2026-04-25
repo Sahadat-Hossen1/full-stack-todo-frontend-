@@ -30,9 +30,10 @@ export default function AddTodo() {
       },
       body:JSON.stringify(newTodo)
     }).then(res=>res.json())
-    .then((data)=>{
-      // console.log("success from add todo", data);
-      setTodos([...todos,data])
+    .then((response)=>{
+      // Backend returns { success: true, data: todo }
+      const newTodoData = response.data;
+      setTodos([...todos, newTodoData])
       form.reset()
     }).catch(error=>{
       console.log("error from add todo", error.message);

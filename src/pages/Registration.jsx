@@ -5,12 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../firebase/firebaseConfig/FirebaseConfig';
 import GoogleSignIn from '../components/GoogleSignin/GoogleSignIn';
 import PostUser from '../services/PostUser';
-import useAdmin from '../context/Admin/useAdmin';
 
 export default function Registration() {
-  //
-  const {AllUsersData}=useAdmin()
-  // 
       const [showPassword, setShowPassword] = useState(false);
       const[errorMessage, setErrorMessage]=useState('');
       // 
@@ -31,11 +27,9 @@ export default function Registration() {
         updateProfile(auth.currentUser,{displayName:name}).then(async()=>{
           console.log("user name updated");
           console.log(user);
-          const isAlreadyExist=AllUsersData.find((user)=>user.uid === userCredential.user.uid);
           const newUser={
-            // id:userCredential.user.metadata.createdAt,
             uid:userCredential.user.uid,
-            displayName:userCredential.user.displayName,
+            displayName:name,
             email,
             photoURL:userCredential.user.photoURL,
             phoneNumber:userCredential.user.phoneNumber,
@@ -47,10 +41,7 @@ export default function Registration() {
             },
             role:"user"
           }
-          if(!isAlreadyExist){
-            await PostUser(newUser);
-          }
-          // PostUser()
+          await PostUser(newUser);
             navigate("/")
         }).catch((error)=>{
           console.log(error);

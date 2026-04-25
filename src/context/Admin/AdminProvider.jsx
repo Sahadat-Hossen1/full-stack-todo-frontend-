@@ -11,14 +11,14 @@ export default function AdminProvider({children}) {
     const data = await res.json();
     // console.log(data);
 
-    return data;
+    return data?.data || [];
   };
   const GetAllTodos = async () => {
     const res = await fetch(`http://localhost:3000/api/todos`);
     const data = await res.json();
     // console.log(data);
 
-    return data;
+    return data?.data || [];
   };
   useEffect(() => {
     try {
@@ -42,6 +42,7 @@ export default function AdminProvider({children}) {
   // console.log(AllTodosData);
     const AdminInfo={
         AllUsersData,
+        setAllUsersData,
         AllTodosData,
         loading,
     }

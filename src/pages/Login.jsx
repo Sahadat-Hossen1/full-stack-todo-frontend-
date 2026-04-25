@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import GoogleSignIn from "../components/GoogleSignin/GoogleSignIn";
 import useAdmin from "../context/Admin/useAdmin";
 import ForgetPassword from "../components/forgetPassword/ForgetPassword";
+import PostUser from "../services/PostUser";
 // import apiEndPoint from "../apiEndPoint";
 
 export default function Login() {
@@ -14,58 +15,55 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   // const[email,setEmail]=useState('');
   //
-  const { AllUsersData,setAllUsersData } = useAdmin();
+  const { setAllUsersData } = useAdmin();
   //
 
   const navigate = useNavigate();
   // Handle form submission
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const formData = e.currentTarget;
     const email = formData.email.value;
     const password = formData.password.value;
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-        if (user) {
-          //update user lastLogin time
-          const isAlreadyExist = AllUsersData.find(
-            (user) => user.uid === userCredential.user.uid,
-          );
-          if (isAlreadyExist) {
-            fetch(`http://localhost:3000/api/users/${isAlreadyExist.id}`, {
-              method: "PATCH",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({metadata:{
-                createdAt: user.metadata.createdAt,
-                lastLogin: user.metadata.lastLoginAt,
-                lastLogout: user.metadata.lastSignInTime,
-                lastSignInTime: user.metadata.lastSignInTime,
-              }}),
-            })
-            .then((res) => res.json())
-            .then((data) =>{
-            setAllUsersData([...AllUsersData, data]);
-            console.log(data);
-            
+      if (!user) {
+        return;
+      }
 
-              })
-              .catch((err) =>
-                console.log("error from patch lastLogin", err.message),
-              );
-          }
-          // console.log("Login successful")
-          navigate("/");
-          setErrorMessage("");
-        }
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        setErrorMessage(errorMessage);
-        console.error("Login error:", errorMessage);
+      const savedUser = await PostUser({
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        phoneNumber: user.phoneNumber,
+        metadata: {
+          createdAt: user.metadata.createdAt,
+          lastLogin: user.metadata.lastLoginAt,
+          lastLogout: null,
+          lastSignInTime: user.metadata.lastSignInTime,
+        },
+        role: "user",
       });
+
+      setAllUsersData((prevUsers) => {
+        const usersArray = Array.isArray(prevUsers) ? prevUsers : [];
+        const otherUsers = usersArray.filter(
+          (existingUser) => existingUser._id !== savedUser._id,
+        );
+        return [...otherUsers, savedUser];
+      });
+
+      navigate("/");
+      setErrorMessage("");
+    } catch (error) {
+      const nextErrorMessage = error.message;
+      setErrorMessage(nextErrorMessage);
+      console.error("Login error:", nextErrorMessage);
+    }
   };
 
   return (

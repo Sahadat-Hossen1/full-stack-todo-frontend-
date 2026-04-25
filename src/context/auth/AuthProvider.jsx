@@ -4,6 +4,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import auth from "../../firebase/firebaseConfig/FirebaseConfig";
 // import apiEndPoint from "../../apiEndPoint";
 
+const normalizeFirebaseMetadata = (metadata) => ({
+  createdAt: metadata?.createdAt || null,
+  lastLogin: metadata?.lastLoginAt || null,
+  lastLogout: null,
+  lastSignInTime: metadata?.lastSignInTime || null,
+});
+
 export default function AuthProvider({ children }) {
   const [isLoading, setisLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -24,8 +31,8 @@ export default function AuthProvider({ children }) {
           `http://localhost:3000/api/users?uid=${currentUser.uid}`
         );
 
-        const users = res.ok ? await res.json() : [];
-        const dbData = users?.[0] || {};
+        const responseData = res.ok ? await res.json() : { data: [] };
+        const dbData = responseData?.data?.[0] || {};
 
         const mergedUser = {
           uid: currentUser.uid,
@@ -35,9 +42,8 @@ export default function AuthProvider({ children }) {
           phoneNumber: currentUser.phoneNumber,
           emailVerified: currentUser.emailVerified,
           isAnonymous: currentUser.isAnonymous,
-          metadata: currentUser.metadata,
-          ...dbData,
-          name: dbData?.name || currentUser.displayName,
+          metadata:
+            dbData?.metadata || normalizeFirebaseMetadata(currentUser.metadata),
           role: dbData?.role || "user",
         };
 
@@ -52,7 +58,7 @@ export default function AuthProvider({ children }) {
           phoneNumber: currentUser.phoneNumber,
           emailVerified: currentUser.emailVerified,
           isAnonymous: currentUser.isAnonymous,
-          metadata: currentUser.metadata,
+          metadata: normalizeFirebaseMetadata(currentUser.metadata),
           role: "user",
         });
       } finally {

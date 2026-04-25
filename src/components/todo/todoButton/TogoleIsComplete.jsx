@@ -15,7 +15,7 @@ export default function TogoleIsComplete({ item }) {
 
     // console.log(updatedTodo);
     fetch(`http://localhost:3000/api/todos/${_id}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

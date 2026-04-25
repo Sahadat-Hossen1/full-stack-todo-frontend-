@@ -16,7 +16,7 @@ export default function Edit({ editingID, setEditingID, item }) {
       item._id === _id ? { ...item, title: updatedTitle } : item,
     );
     fetch(`http://localhost:3000/api/todos/${editingID}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

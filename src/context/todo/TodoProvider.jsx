@@ -32,10 +32,15 @@ export default function TodoProvider({ children }) {
         try {
           setIsLoading(true);
           const res = await fetch(api);
-          const data = await res.json();
-          // console.log(data.reverse());
-
-          setTodos(data.reverse());
+          const response = await res.json();
+          // Backend returns { success: true, data: [...] }
+          const todoData = response.data || response;
+          
+          if (Array.isArray(todoData)) {
+            setTodos(todoData.reverse());
+          } else {
+            setTodos([]);
+          }
         } catch (error) {
           // setIsLoading(false)
           console.log("error from get todo", error.message);
