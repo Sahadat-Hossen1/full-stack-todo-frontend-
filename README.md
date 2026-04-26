@@ -2,6 +2,12 @@
 
 A modern, full-featured Todo application built with React and Vite. This project includes comprehensive user authentication (Google Sign-in and email/password), admin dashboard, todo management with sorting capabilities, and automatic user metadata tracking. Features a responsive design with Tailwind CSS and robust state management using React Context API.
 
+##🌐 Live Demo
+
+🔗 https://full-stack-todo-frontend-gamma.vercel.app/
+
+📸 Screenshot
+![alt text](<src/assets/Screenshot (152).png>)![alt text](<src/assets/Screenshot (153).png>)![alt text](<src/assets/Screenshot (154).png>)![alt text](<src/assets/Screenshot (155).png>)![alt text](<src/assets/Screenshot (156).png>)![alt text](<src/assets/Screenshot (157).png>)![alt text](<src/assets/Screenshot (158).png>)![alt text](<src/assets/Screenshot (159).png>)![alt text](<src/assets/Screenshot (160).png>)
 ## 🌟 Features
 
 - **User Authentication**: Google Sign-in and email/password authentication with Firebase
