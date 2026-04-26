@@ -20,7 +20,7 @@ export default function TodoProvider({ children }) {
         setIsLoading(false);
         return;
       }
-      let api = `http://localhost:3000/api/todos?userUID=${userUID}`;
+      let api = `https://full-stack-todo-backend-8yku.onrender.com/api/todos?userUID=${userUID}`;
       if (currentFilter === "completed") {
         api += `&isCompleted=true`;
       } else if (currentFilter === "pendding") {

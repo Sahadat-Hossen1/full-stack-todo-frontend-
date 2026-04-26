@@ -30,7 +30,7 @@ export default function SingleUser() {
 
   useEffect(() => {
     const getSingleUser = async () => {
-      const response = await fetch(`http://localhost:3000/api/users/${_id}`);
+      const response = await fetch(`https://full-stack-todo-backend-8yku.onrender.com/api/users/${_id}`);
       const data = await response.json();
       console.log(data);
 

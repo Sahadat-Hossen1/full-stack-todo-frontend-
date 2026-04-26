@@ -23,7 +23,7 @@ export default function AddTodo() {
 
     }
     // console.log(newTodo);
-    fetch(`http://localhost:3000/api/todos`,{
+    fetch(`https://full-stack-todo-backend-8yku.onrender.com/api/todos`,{
       method:"POST",
       headers:{
         "content-type":"application/json"

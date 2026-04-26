@@ -28,7 +28,7 @@ export default function AuthProvider({ children }) {
 
       try {
         const res = await fetch(
-          `http://localhost:3000/api/users?uid=${currentUser.uid}`
+          `https://full-stack-todo-backend-8yku.onrender.com/api/users?uid=${currentUser.uid}`
         );
 
         const responseData = res.ok ? await res.json() : { data: [] };

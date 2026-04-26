@@ -7,7 +7,7 @@ export default function Delete({ item}) {
   const handleDelete = (_id) => {
     const DeletedTodo = todos.filter((item) => item._id !== _id);
     setTodos(DeletedTodo);
-    fetch(`http://localhost:3000/api/todos/${_id}`, {
+    fetch(`https://full-stack-todo-backend-8yku.onrender.com/api/todos/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -15,7 +15,7 @@ export default function Edit({ editingID, setEditingID, item }) {
     const updatedTodo = todos.map((item) =>
       item._id === _id ? { ...item, title: updatedTitle } : item,
     );
-    fetch(`http://localhost:3000/api/todos/${editingID}`, {
+    fetch(`https://full-stack-todo-backend-8yku.onrender.com/api/todos/${editingID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

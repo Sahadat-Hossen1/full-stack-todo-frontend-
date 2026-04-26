@@ -14,7 +14,7 @@ export default function TogoleIsComplete({ item }) {
     setTodos(updatedTodos);
 
     // console.log(updatedTodo);
-    fetch(`http://localhost:3000/api/todos/${_id}`, {
+    fetch(`https://full-stack-todo-backend-8yku.onrender.com/api/todos/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
